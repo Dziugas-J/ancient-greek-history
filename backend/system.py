@@ -12,7 +12,7 @@ load_dotenv()
 
 BOOK_PATH = Path(__file__).resolve().parent / "data" / "book_of_the_ancient_greeks.txt"
 ENTITY_LABELS = {"PERSON", "GPE", "LOC", "EVENT"}
-FUZZY_MATCH_THRESHOLD = 85
+FUZZY_MATCH_THRESHOLD = 80
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 openai_client = OpenAI()
