@@ -1,21 +1,19 @@
-from system import load_book, split_book, create_faiss_index, retrieve_chunks, generate_answer
+from system import split_book, create_faiss_index, build_entity_list, retrieve_chunks, generate_answer
 
 
 def main():
-    df = load_book()
-    print(df.shape)
-
     chunks = split_book()
-    print(len(chunks))
-
     index = create_faiss_index(chunks)
-    print(index.ntotal)
+    entity_list = build_entity_list(chunks)
 
-    query = "Who was Pericles?"
-    results = retrieve_chunks(query, index, chunks)
+    while True:
+        query = input("\n> ").strip()
+        if not query:
+            break
 
-    answer = generate_answer(query, results)
-    print(answer)
+        results = retrieve_chunks(query, index, chunks, entity_list)
+        answer = generate_answer(query, results)
+        print(answer)
 
 
 if __name__ == "__main__":
