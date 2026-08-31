@@ -1,0 +1,1 @@
+Built a retrieval-augmented QA system over a full-length book on ancient Greek history. System chunks and embeds the text with sentence-transformers, retrieves via FAISS cosine similarity, and corrects misspelled names/places in queries using spaCy NER + fuzzy matching before generating answers with GPT-4o-mini. Demo is built on StreamLit UI and Python as backend.
